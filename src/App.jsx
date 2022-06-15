@@ -3,17 +3,19 @@ import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
+import Header from './components/Header';
+import Login from './pages/Login';
+import NewUser from './pages/NewUser';
 
 function App() {
   return (
     <Router>
-    <div className="pt-20">
-      <Navbar />
+      <Header />
       <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/about" element={<About />} />
+        <Route path="/home" element={<Home />}/>
+        <Route path="/" element={<Login/>}></Route>
+        <Route path="/newUser" element={<NewUser />} />
       </Routes>
-    </div>
     </Router>
   )
 }
