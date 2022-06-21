@@ -14,10 +14,11 @@ export const connect = async (username, password) => {
 
   //if (!tokenset) {
   await axios
-    .put("http://localhost:9080/iniciosesion", user)
+    .put("http://apis.developingbrutality.ga/iniciosesion", user)
     .then((e) => {
       localStorage.setItem("Session", e.data.Value);
       localStorage.setItem("lastlogin", Date.now());
+      localStorage.setItem("userId",data.Correo)
     })
     .catch(function (error) {
       console.log(error);

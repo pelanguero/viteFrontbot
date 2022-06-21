@@ -11,7 +11,7 @@ const Home = () => {
   if (libros.length === 0 || Object.keys(status) === 0) {
     axios
       .post("https://apibotservice.azurewebsites.net/apiBot/services/AccessApi/getProjects", {
-        "idUser":"testUser"
+        "idUser":localStorage.getItem("userId")
       })
       .then((e) => {
         status = e;
