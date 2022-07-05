@@ -36,7 +36,7 @@ const Home = () => {
         
         <div className="container-card">
           <Sub
-            title="Agregar Libro"
+            title="Agregar proyecto"
             image="http://localhost:8080/images/Plus_symbol.png"
             onsub={() => {
               setLibros([]);

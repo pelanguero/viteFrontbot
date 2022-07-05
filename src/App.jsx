@@ -5,7 +5,7 @@ import Header from './components/Header';
 import Login from './pages/Login';
 import NewUser from './pages/NewUser';
 import NewProject from './pages/newProject';
-
+import ViewQuestions from './pages/ViewQuestions';
 function App() {
   return (
     <Router>
@@ -15,6 +15,7 @@ function App() {
         <Route path="/" element={<Login/>}/>
         <Route path="/newUser" element={<NewUser />} />
         <Route path="/newProject" element={<NewProject />} />
+        <Route path="/questions" element={<ViewQuestions />} />
       </Routes>
     </Router>
   )
