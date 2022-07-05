@@ -1,10 +1,9 @@
 import { Component } from "react";
 import axios from "axios";
-
+import { Navigate } from "react-router-dom";
+//import { useNavigate} from 'react-router-dom';
 class FileUpload extends Component {
-  // API Endpoints
-  custom_file_upload_url = `http://localhost:8080/upload`;
-
+  state={goto:false}
   constructor(props) {
     super(props);
     this.state = {
@@ -24,56 +23,33 @@ class FileUpload extends Component {
     });
   };
 
-  // Image/File Submit Handler
-  handleSubmitFile = () => {
-    if (this.state.image_file !== null) {
-      let formData = new FormData();
-      formData.append("myFile", this.state.image_file);
-      //formData.append('id', 'pelangueroid');
-      // the image field name should be similar to your api endpoint field name
-      // in my case here the field name is customFile
-
-      axios
-        .post("http://localhost:8080/upload", formData, {
-          headers: {
-            token: localStorage.getItem("Session"),
-          },
-        })
-        .then((res) => {
-          console.log(`Success` + res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+  gotoCreateProject = () => {
+    this.setState({goto:true});
   };
 
-  // render from here
   render() {
-    return (
-      <div>
-        {/* image preview */}
+    if(this.state.goto){
+      return(<Navigate to="/newProject" />);
 
-        {/* image input field */}
-
-        <div className="card">
-          <div>
-            <img src={this.props.image} alt={this.props.title} />
-          </div>
-          <div className="contenido-card">
-            <h3>{this.props.title}</h3>
-            <input
-              type="file"
-              onChange={this.handleImagePreview}
-              name="myFile"
-            />
-            <button type="submit" onClick={this.handleSubmitFile}>
-              Subir
-            </button>
+    }else{
+      return (
+        <div>
+          <div className="card">
+            <div>
+              <img src={this.props.image} alt={this.props.title} />
+            </div>
+            <div className="contenido-card">
+              <h3>{this.props.title}</h3>
+              
+              <button onClick={this.gotoCreateProject}>
+                Crear proyecto
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
+    
   }
 }
 
